@@ -1,0 +1,9 @@
+compelled-disclosure.pfs0
+compelled-disclosure.nso
+compelled-disclosure.nro
+compelled-disclosure.nacp
+compelled-disclosure.elf
+build/
+save_files/
+.vscode/settings.json
+source/.vscode/settings.json
