@@ -78,3 +78,32 @@ Result backupSystemSavedata(u64 titleId, u64 saveId)
 
     return rc;
 }
+
+Result restoreSystemSavedata(u64 titleId, u64 saveId)
+{
+    Result rc;
+
+    if (R_FAILED(rc = openSystemSavedata(titleId, saveId)))
+    {
+        printf("Failed to open save data. Error code: 0x%08x\n", rc);
+        return rc;
+    }
+
+    char outPath[FS_MAX_PATH];
+    snprintf(outPath, FS_MAX_PATH, "/switch/compelled_disclosure/%016lx/", titleId);
+
+    if (R_FAILED(rc = removeDir("save:/")))
+    {
+        printf("Failed to remove save folder\n");
+        return rc;
+    }
+
+    // Begin copying files
+    if (R_FAILED(rc = copyDir(outPath, "save:/")))
+    {
+        printf("Failed to copy save:/ to out path %s\n", outPath);
+        return rc;
+    }
+
+    return rc;
+}

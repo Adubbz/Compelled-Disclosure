@@ -148,8 +148,12 @@ Result removeDir(const char *path)
     }
 
     free(dirEntries);
-    if (R_FAILED(rc = rmdir(path)))
-        printf("Failed to remove dir %s\n", path);
+    
+    if (!strcmp(path, "save:/"))
+    {
+        if (R_FAILED(rc = rmdir(path)))
+            printf("Failed to remove dir %s\n", path);
+    }
 
     return rc;
 }

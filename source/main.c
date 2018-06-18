@@ -41,8 +41,10 @@ int main(int argc, char **argv)
         goto loop_input;
     }
 
-    printf("Backing up vmdb save data...\n");
-    backupSystemSavedata(NS_TITLE_ID, VMDB_SAVE_ID);
+    //printf("Backing up vmdb save data...\n");
+    //backupSystemSavedata(NS_TITLE_ID, VMDB_SAVE_ID);
+    printf("Restoring vmdb save data...\n");
+    restoreSystemSavedata(NS_TITLE_ID, VMDB_SAVE_ID);
     fsdevUnmountDevice("save");
 
     loop_input:
