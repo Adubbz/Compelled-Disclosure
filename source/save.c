@@ -92,11 +92,12 @@ Result restoreSystemSavedata(u64 titleId, u64 saveId)
     char outPath[FS_MAX_PATH];
     snprintf(outPath, FS_MAX_PATH, "/switch/compelled_disclosure/%016lx/", titleId);
 
-    if (R_FAILED(rc = removeDir("save:/")))
+    //TODO: THIS IS BROKEN
+    /*if (R_FAILED(rc = removeDir("save:/")))
     {
         printf("Failed to remove save folder\n");
         return rc;
-    }
+    }*/
 
     // Begin copying files
     if (R_FAILED(rc = copyDir(outPath, "save:/")))
